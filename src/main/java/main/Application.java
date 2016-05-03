@@ -17,7 +17,7 @@ public class Application {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 //        restTemplate.getForObject(url, Message.class);
-        restTemplate.postForObject(url, new JSONMessage("main", new Date(), "1", "2", "alin", "asd"),  JSONMessage.class);
+//        restTemplate.postForObject(url, new JSONMessage("main", new Date(), "1", "2", "alin", "asd"),  JSONMessage.class);
 
 //        System.out.println(greeting);
     }

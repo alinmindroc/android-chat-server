@@ -3,8 +3,10 @@ package main;
 import javax.sql.DataSource;
 
 import dao.ConversationDao;
+import dao.MessageDao;
 import dao.PersonDao;
 import model.Conversation;
+import model.Message;
 import model.Person;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
@@ -17,6 +19,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class AppConfig {
+    @Bean
+    public MessageDao messageDao() {
+        return new MessageDao();
+    }
     @Bean
     public ConversationDao conversationDao() {
         return new ConversationDao();
@@ -34,6 +40,7 @@ public class AppConfig {
         return new LocalSessionFactoryBuilder(getDataSource())
                 .addAnnotatedClasses(Person.class)
                 .addAnnotatedClasses(Conversation.class)
+                .addAnnotatedClasses(Message.class)
                 .buildSessionFactory();
     }
     @Bean
