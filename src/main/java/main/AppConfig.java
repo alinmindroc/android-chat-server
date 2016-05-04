@@ -2,12 +2,8 @@ package main;
 
 import javax.sql.DataSource;
 
-import dao.ConversationDao;
 import dao.MessageDao;
-import dao.PersonDao;
-import model.Conversation;
 import model.Message;
-import model.Person;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
@@ -24,22 +20,12 @@ public class AppConfig {
         return new MessageDao();
     }
     @Bean
-    public ConversationDao conversationDao() {
-        return new ConversationDao();
-    }
-    @Bean
-    public PersonDao personDao() {
-        return new PersonDao();
-    }
-    @Bean
     public HibernateTemplate hibernateTemplate() {
         return new HibernateTemplate(sessionFactory());
     }
     @Bean
     public SessionFactory sessionFactory() {
         return new LocalSessionFactoryBuilder(getDataSource())
-                .addAnnotatedClasses(Person.class)
-                .addAnnotatedClasses(Conversation.class)
                 .addAnnotatedClasses(Message.class)
                 .buildSessionFactory();
     }

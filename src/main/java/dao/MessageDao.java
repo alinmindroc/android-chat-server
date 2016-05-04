@@ -1,8 +1,6 @@
 package dao;
 
-import model.Conversation;
 import model.Message;
-import model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 
@@ -20,9 +18,7 @@ public class MessageDao {
         //folosim Message, numele entitatii, nu al tabelului. csf n-ai csf
         String query = "select m from Message m where m.receiverId=?";
         Object[] queryParam = {receiverId};
-        System.out.println(hibernateTemplate.find(query, queryParam));
-
-        return null;
+        return (List<Message>) hibernateTemplate.find(query, queryParam);
     }
 
     public void saveMessage(String text, String senderId, String receiverId) {

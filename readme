@@ -1,0 +1,3 @@
+endpointuri server:
+/message: POST - adaugare mesaj in request body
+        : GET - preluare lista de mesaje cu receiverId specificat ca url param
