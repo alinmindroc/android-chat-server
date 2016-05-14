@@ -3,18 +3,22 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="message")
+@Table(name = "messages")
 public class Message {
     @Id
-    @Column(name="id")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name="text")
+    @Column(name = "text")
     private String text;
-    @Column(name="senderId")
+    @Column(name = "senderId")
     private String senderId;
-    @Column(name="receiverId")
+    @Column(name = "receiverId")
     private String receiverId;
+    @Column(name = "senderName")
+    private String senderName;
+    @Column(name = "receiverName")
+    private String receiverName;
 
     public int getId() {
         return id;
@@ -47,4 +51,12 @@ public class Message {
     public void setReceiverId(String receiverId) {
         this.receiverId = receiverId;
     }
+
+    public String getReceiverName() {return receiverName;}
+
+    public void setReceiverName(String receiverName) {this.receiverName = receiverName;}
+
+    public String getSenderName() {return senderName;}
+
+    public void setSenderName(String senderName) {this.senderName = senderName;}
 }

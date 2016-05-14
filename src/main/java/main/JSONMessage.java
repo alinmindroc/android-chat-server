@@ -7,30 +7,40 @@ import java.util.Date;
 
 public class JSONMessage {
     private String content;
+    private Date date;
     private String senderId;
     private String receiverId;
-    private Date date;
+    private String senderName;
+    private String receiverName;
 
     @JsonCreator
     public JSONMessage() {
         super();
     }
 
-    public JSONMessage(String content, String senderId, String receiverId, Date date) {
+    public JSONMessage(String content, Date date, String senderId, String receiverId, String senderName, String receiverName) {
         this.content = content;
+        this.date = date;
         this.senderId = senderId;
         this.receiverId = receiverId;
-        this.date = date;
+        this.senderName = senderName;
+        this.receiverName = receiverName;
     }
 
-    @Override
-    public String toString() {
-        return "JSONMessage{" +
-                "content='" + content + '\'' +
-                ", senderId='" + senderId + '\'' +
-                ", receiverId='" + receiverId + '\'' +
-                ", date='" + date + '\'' +
-                '}';
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
     }
 
     public String getContent() {
@@ -39,6 +49,14 @@ public class JSONMessage {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getSenderId() {
@@ -57,11 +75,15 @@ public class JSONMessage {
         this.receiverId = receiverId;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    @Override
+    public String toString() {
+        return "JSONMessage{" +
+                "content='" + content + '\'' +
+                ", date=" + date +
+                ", senderId='" + senderId + '\'' +
+                ", receiverId='" + receiverId + '\'' +
+                ", senderName='" + senderName + '\'' +
+                ", receiverName='" + receiverName + '\'' +
+                '}';
     }
 }

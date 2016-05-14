@@ -1,5 +1,6 @@
 package main;
 
+import model.Message;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
