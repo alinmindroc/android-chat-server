@@ -12,8 +12,7 @@ public class JSONGroup {
         super();
     }
 
-    public JSONGroup(int id, String name, String membersId) {
-        this.id = id;
+    public JSONGroup(String name, String membersId) {
         this.name = name;
         this.membersId = membersId;
     }

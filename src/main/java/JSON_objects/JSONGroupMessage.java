@@ -14,8 +14,7 @@ public class JSONGroupMessage {
         super();
     }
 
-    public JSONGroupMessage(int id, String text, String senderId, String senderName, String groupId) {
-        this.id = id;
+    public JSONGroupMessage(String text, String senderId, String senderName, String groupId) {
         this.text = text;
         this.senderId = senderId;
         this.senderName = senderName;
