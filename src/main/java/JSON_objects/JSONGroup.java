@@ -1,10 +1,6 @@
 package JSON_objects;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.persistence.Column;
-import java.util.Date;
 
 public class JSONGroup {
     private int id;

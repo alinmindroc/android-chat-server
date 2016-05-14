@@ -1,12 +1,7 @@
 package main;
 
-import model.Message;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.Date;
 
 @SpringBootApplication
 public class Application {

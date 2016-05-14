@@ -31,7 +31,7 @@ public class GroupMessageController {
 
     @RequestMapping(value = "/groupMessage", method = RequestMethod.POST)
     @ResponseBody
-    public void addGroupMessage(@RequestBody JSONGroupMessage jsonGroupMessage){
-        groupMessageDao.saveGroupMessage(jsonGroupMessage);
+    public String addGroupMessage(@RequestBody JSONGroupMessage jsonGroupMessage){
+        return groupMessageDao.saveGroupMessage(jsonGroupMessage);
     }
 }

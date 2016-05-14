@@ -1,9 +1,7 @@
 package dao;
 
 import JSON_objects.JSONGroupMessage;
-import JSON_objects.JSONMessage;
 import model.GroupMessage;
-import model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 
@@ -23,7 +21,7 @@ public class GroupMessageDao {
         return (List<JSONGroupMessage>) hibernateTemplate.find(query, queryParam);
     }
 
-    public void saveGroupMessage(JSONGroupMessage jsonGroupMessage) {
+    public String saveGroupMessage(JSONGroupMessage jsonGroupMessage) {
         GroupMessage message = new GroupMessage();
 
         message.setText(jsonGroupMessage.getText());
@@ -32,5 +30,7 @@ public class GroupMessageDao {
         message.setGroupId(jsonGroupMessage.getGroupId());
 
         hibernateTemplate.save(message);
+
+        return "success";
     }
 }

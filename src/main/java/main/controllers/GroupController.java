@@ -30,7 +30,7 @@ public class GroupController {
 
     @RequestMapping(value = "/group", method = RequestMethod.POST)
     @ResponseBody
-    public void addGroup(@RequestBody JSONGroup jsonGroup){
-        groupDao.addGroup(jsonGroup);
+    public String addGroup(@RequestBody JSONGroup jsonGroup){
+        return groupDao.addGroup(jsonGroup);
     }
 }

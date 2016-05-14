@@ -20,7 +20,7 @@ public class MessageDao {
         return (List<JSONMessage>) hibernateTemplate.find(query, queryParam);
     }
 
-    public void addMessage(JSONMessage jsonMessage) {
+    public String addMessage(JSONMessage jsonMessage) {
         Message message = new Message();
 
         message.setText(jsonMessage.getContent());
@@ -30,5 +30,7 @@ public class MessageDao {
         message.setReceiverName(jsonMessage.getReceiverName());
 
         hibernateTemplate.save(message);
+
+        return "success";
     }
 }

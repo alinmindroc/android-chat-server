@@ -32,7 +32,7 @@ public class MessageController {
 
     @RequestMapping(value = "/message", method = RequestMethod.POST)
     @ResponseBody
-    public void addMessage(@RequestBody JSONMessage jsonMessage){
-        messageDao.addMessage(jsonMessage);
+    public String addMessage(@RequestBody JSONMessage jsonMessage){
+        return messageDao.addMessage(jsonMessage);
     }
 }

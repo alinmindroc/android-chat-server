@@ -1,9 +1,7 @@
 package dao;
 
 import JSON_objects.JSONGroup;
-import JSON_objects.JSONGroupMessage;
 import model.Group;
-import model.GroupMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 
@@ -24,13 +22,15 @@ public class GroupDao {
         return allGroups;
     }
 
-    public void addGroup(JSONGroup jsonGroup) {
+    public String addGroup(JSONGroup jsonGroup) {
         Group group = new Group();
 
         group.setMembersId(jsonGroup.getMembersId());
         group.setName(jsonGroup.getName());
 
         hibernateTemplate.save(group);
+
+        return "success";
     }
 
 }

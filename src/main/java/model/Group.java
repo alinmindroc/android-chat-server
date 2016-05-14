@@ -1,7 +1,5 @@
 package model;
 
-import JSON_objects.JSONGroup;
-
 import javax.persistence.*;
 
 @Entity
