@@ -2,7 +2,11 @@ package main;
 
 import javax.sql.DataSource;
 
+import dao.GroupDao;
+import dao.GroupMessageDao;
 import dao.MessageDao;
+import model.Group;
+import model.GroupMessage;
 import model.Message;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
@@ -16,6 +20,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class AppConfig {
     @Bean
+    public GroupMessageDao groupMessageDao() {
+        return new GroupMessageDao();
+    }
+    @Bean
+    public GroupDao groupDao() {
+        return new GroupDao();
+    }
+    @Bean
     public MessageDao messageDao() {
         return new MessageDao();
     }
@@ -27,6 +39,8 @@ public class AppConfig {
     public SessionFactory sessionFactory() {
         return new LocalSessionFactoryBuilder(getDataSource())
                 .addAnnotatedClasses(Message.class)
+                .addAnnotatedClasses(Group.class)
+                .addAnnotatedClasses(GroupMessage.class)
                 .buildSessionFactory();
     }
     @Bean

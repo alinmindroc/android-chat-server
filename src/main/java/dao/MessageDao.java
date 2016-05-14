@@ -1,12 +1,11 @@
 package dao;
 
-import main.JSONMessage;
+import JSON_objects.JSONMessage;
 import model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -21,14 +20,14 @@ public class MessageDao {
         return (List<JSONMessage>) hibernateTemplate.find(query, queryParam);
     }
 
-    public void saveMessage(String text, String senderId, String receiverId, String senderName, String receiverName) {
+    public void addMessage(JSONMessage jsonMessage) {
         Message message = new Message();
 
-        message.setText(text);
-        message.setSenderId(senderId);
-        message.setReceiverId(receiverId);
-        message.setSenderName(senderName);
-        message.setReceiverName(receiverName);
+        message.setText(jsonMessage.getContent());
+        message.setSenderId(jsonMessage.getSenderId());
+        message.setReceiverId(jsonMessage.getReceiverId());
+        message.setSenderName(jsonMessage.getSenderName());
+        message.setReceiverName(jsonMessage.getReceiverName());
 
         hibernateTemplate.save(message);
     }

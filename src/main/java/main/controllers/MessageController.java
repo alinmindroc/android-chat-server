@@ -1,10 +1,11 @@
-package main;
+package main.controllers;
 
+import JSON_objects.JSONMessage;
 import dao.MessageDao;
+import main.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -31,9 +32,7 @@ public class MessageController {
 
     @RequestMapping(value = "/message", method = RequestMethod.POST)
     @ResponseBody
-    public JSONMessage postMessage(@RequestBody JSONMessage message){
-        messageDao.saveMessage(message.getContent(), message.getSenderId(), message.getReceiverId(), message.getSenderName(), message.getReceiverName());
-
-        return new JSONMessage("asd", new Date(), "1", "2", "3", "4");
+    public void addMessage(@RequestBody JSONMessage jsonMessage){
+        messageDao.addMessage(jsonMessage);
     }
 }
