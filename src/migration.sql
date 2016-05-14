@@ -1,0 +1,13 @@
+USE lechat;
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE `messages` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `text` VARCHAR(500) NOT NULL,
+  `senderId` VARCHAR(100) NOT NULL,
+  `receiverId` VARCHAR(100) NOT NULL
+) Engine=InnoDB;
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `facebookId` VARCHAR(500) NOT NULL
+) Engine=InnoDB;

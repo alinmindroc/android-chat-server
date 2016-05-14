@@ -1,0 +1,1 @@
+/opt/lampp/bin/mysql -uroot < migration.sql
