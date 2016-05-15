@@ -13,7 +13,7 @@ public class GroupController {
     private AnnotationConfigApplicationContext ctx;
     private GroupDao groupDao;
 
-    public GroupController(){
+    public GroupController() {
         ctx = new AnnotationConfigApplicationContext();
         ctx.register(AppConfig.class);
         ctx.refresh();
@@ -23,14 +23,23 @@ public class GroupController {
 
     @RequestMapping(value = "/group", method = RequestMethod.GET)
     public List<JSONGroup> getGroups(
-            @RequestParam(value = "memberId", defaultValue = "0") String memberId){
+            @RequestParam(value = "memberId", defaultValue = "0") String memberId) {
         List<JSONGroup> result = groupDao.getGroups(memberId);
         return result;
     }
 
     @RequestMapping(value = "/group", method = RequestMethod.POST)
     @ResponseBody
-    public String addGroup(@RequestBody JSONGroup jsonGroup){
+    public String addGroup(@RequestBody JSONGroup jsonGroup) {
         return groupDao.addGroup(jsonGroup);
+    }
+
+    @RequestMapping(value = "/leaveGroup", method = RequestMethod.GET)
+    public String leaveGroup(
+            @RequestParam(value = "groupId", defaultValue = "0") int groupId,
+            @RequestParam(value = "memberId", defaultValue = "0") String memberId) {
+
+        String result = groupDao.leaveGroup(groupId, memberId);
+        return result;
     }
 }
