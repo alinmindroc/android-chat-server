@@ -17,14 +17,14 @@ public class GroupDao {
     public List<JSONGroup> getGroups(String memberId) {
         String query = "select g from Group g";
 
-        List<JSONGroup> allGroups = (List<JSONGroup>) hibernateTemplate.find(query);
+        List<Group> allGroups = (List<Group>) hibernateTemplate.find(query);
         //de filtrat doar grupurile care contin memberId
 
         ArrayList<JSONGroup> filteredGroups = new ArrayList<>();
 
-        for(JSONGroup g: allGroups){
+        for(Group g: allGroups){
             if(g.getMembersId().contains(memberId)){
-                filteredGroups.add(g);
+                filteredGroups.add(new JSONGroup(g.getId(),     g.getName(), g.getMembersId()));
             }
         }
 

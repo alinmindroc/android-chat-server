@@ -17,6 +17,12 @@ public class JSONGroup {
         this.membersId = membersId;
     }
 
+    public JSONGroup(int id, String name, String membersId) {
+        this.id = id;
+        this.name = name;
+        this.membersId = membersId;
+    }
+
     public int getId() {
         return id;
     }
