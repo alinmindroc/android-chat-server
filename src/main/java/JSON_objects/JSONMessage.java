@@ -6,24 +6,25 @@ import java.util.Date;
 
 public class JSONMessage {
     private String content;
-    private Date date;
     private String senderId;
     private String receiverId;
     private String senderName;
     private String receiverName;
+    private Date date;
 
     @JsonCreator
     public JSONMessage() {
         super();
     }
 
-    public JSONMessage(String content, Date date, String senderId, String receiverId, String senderName, String receiverName) {
+    public JSONMessage(String content, String senderId, String receiverId, String senderName, String receiverName, Date date) {
         this.content = content;
         this.date = date;
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.senderName = senderName;
         this.receiverName = receiverName;
+        this.date = date;
     }
 
     public String getSenderName() {

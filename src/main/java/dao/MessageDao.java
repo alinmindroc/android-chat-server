@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Transactional
@@ -28,9 +29,14 @@ public class MessageDao {
         message.setReceiverId(jsonMessage.getReceiverId());
         message.setSenderName(jsonMessage.getSenderName());
         message.setReceiverName(jsonMessage.getReceiverName());
+        message.setDate(jsonMessage.getDate());
 
         hibernateTemplate.save(message);
 
         return "true";
+    }
+
+    public void removeMessagesOlderThan(Date date){
+        hibernateTemplate.bulkUpdate("DELETE Message m where m.date<?", date);
     }
 }

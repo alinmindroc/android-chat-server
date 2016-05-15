@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "group_messages")
@@ -17,6 +18,17 @@ public class GroupMessage {
     private String senderName;
     @Column(name = "groupId")
     private String groupId;
+    @Column(name = "date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public int getId() {
         return id;

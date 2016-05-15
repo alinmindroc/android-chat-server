@@ -7,7 +7,8 @@ CREATE TABLE `messages` (
   `senderId` VARCHAR(100) NOT NULL,
   `receiverId` VARCHAR(100) NOT NULL,
   `senderName` VARCHAR(100) NOT NULL,
-  `receiverName` VARCHAR(100) NOT NULL
+  `receiverName` VARCHAR(100) NOT NULL,
+  `date` DATETIME NOT NULL
 ) Engine=InnoDB;
 
 DROP TABLE IF EXISTS `group_messages`;
@@ -16,7 +17,8 @@ CREATE TABLE `group_messages` (
   `text` VARCHAR(500) NOT NULL,
   `senderId` VARCHAR(100) NOT NULL,
   `senderName` VARCHAR(100) NOT NULL,
-  `groupId` VARCHAR(100) NOT NULL
+  `groupId` VARCHAR(100) NOT NULL,
+  `date` DATETIME NOT NULL
 ) Engine=InnoDB;
 
 DROP TABLE IF EXISTS `groups`;
