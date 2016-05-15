@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -17,20 +18,29 @@ public class GroupDao {
         String query = "select g from Group g";
 
         List<JSONGroup> allGroups = (List<JSONGroup>) hibernateTemplate.find(query);
-        //de filtrat grupurile doar care contin memberId
+        //de filtrat doar grupurile care contin memberId
 
-        return allGroups;
+        ArrayList<JSONGroup> filteredGroups = new ArrayList<>();
+
+        for(JSONGroup g: allGroups){
+            if(g.getMembersId().contains(memberId)){
+                filteredGroups.add(g);
+            }
+        }
+
+        return filteredGroups;
     }
 
     public String addGroup(JSONGroup jsonGroup) {
         Group group = new Group();
 
+        //asteapta o lista de id-uri despartite prin `:`
         group.setMembersId(jsonGroup.getMembersId());
         group.setName(jsonGroup.getName());
 
         hibernateTemplate.save(group);
 
-        return "success";
+        return "true";
     }
 
 }

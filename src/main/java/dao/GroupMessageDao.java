@@ -31,6 +31,6 @@ public class GroupMessageDao {
 
         hibernateTemplate.save(message);
 
-        return "success";
+        return "true";
     }
 }

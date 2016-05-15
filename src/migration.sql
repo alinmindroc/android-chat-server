@@ -23,5 +23,5 @@ DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
   `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(100) NOT NULL,
-  `mebers_id` VARCHAR(500) NOT NULL
+  `members_id` VARCHAR(500) NOT NULL
 ) Engine=InnoDB;
