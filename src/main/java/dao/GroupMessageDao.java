@@ -22,6 +22,14 @@ public class GroupMessageDao {
         return (List<JSONGroupMessage>) hibernateTemplate.find(query, queryParam);
     }
 
+    public List<GroupMessage> getGroupDBMessages(String groupId){
+        //folosim Message, numele entitatii, nu al tabelului. csf n-ai csf
+        String query = "select m from GroupMessage m where m.groupId=?";
+        Object[] queryParam = {groupId};
+
+        return (List<GroupMessage>) hibernateTemplate.find(query, queryParam);
+    }
+
     public String saveGroupMessage(JSONGroupMessage jsonGroupMessage) {
         GroupMessage message = new GroupMessage();
 

@@ -21,6 +21,13 @@ public class MessageDao {
         return (List<JSONMessage>) hibernateTemplate.find(query, queryParam);
     }
 
+    public List<Message> getDBMessages(String senderId, String receiverId){
+        //folosim Message, numele entitatii, nu al tabelului. csf n-ai csf
+        String query = "select m from Message m where (m.senderId=? and m.receiverId=?) or (m.receiverId=? and m.senderId=?)";
+        Object[] queryParam = {senderId, receiverId, senderId, receiverId};
+        return (List<Message>) hibernateTemplate.find(query, queryParam);
+    }
+
     public String addMessage(JSONMessage jsonMessage) {
         Message message = new Message();
 

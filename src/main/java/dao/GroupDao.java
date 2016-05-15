@@ -66,4 +66,16 @@ public class GroupDao {
         return "true";
     }
 
+    public String addFriendsToGroup(int groupId, String friendsIds) {
+        String query = "select g from Group g where g.id=?";
+        Object[] queryParam = {groupId};
+
+        Group group = ((List<Group>) hibernateTemplate.find(query, queryParam)).get(0);
+
+        group.setMembersId(group.getMembersId() + friendsIds);
+
+        hibernateTemplate.save(group);
+        return "true";
+    }
+
 }

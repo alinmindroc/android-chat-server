@@ -42,4 +42,13 @@ public class GroupController {
         String result = groupDao.leaveGroup(groupId, memberId);
         return result;
     }
+
+    @RequestMapping(value = "/addFriendsToGroup", method = RequestMethod.GET)
+    public String addFriendsToGroup(
+            @RequestParam(value = "groupId", defaultValue = "0") int groupId,
+            @RequestParam(value = "friendsIds", defaultValue = "0") String friendsIds) {
+
+        String result = groupDao.addFriendsToGroup(groupId, friendsIds);
+        return result;
+    }
 }
