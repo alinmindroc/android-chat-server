@@ -27,3 +27,11 @@ CREATE TABLE `groups` (
   `name` VARCHAR(100) NOT NULL,
   `members_id` VARCHAR(500) NOT NULL
 ) Engine=InnoDB;
+
+DROP TABLE IF EXISTS `notifications`;
+CREATE TABLE `notifications` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `content` VARCHAR(100) NOT NULL,
+  `recipientId` VARCHAR(100) NOT NULL,
+  `accepted` VARCHAR(10) NOT NULL
+) Engine=InnoDB;

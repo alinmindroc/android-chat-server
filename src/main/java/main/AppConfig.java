@@ -1,13 +1,13 @@
 package main;
 
-import javax.sql.DataSource;
-
 import dao.GroupDao;
 import dao.GroupMessageDao;
 import dao.MessageDao;
+import dao.NotificationDao;
 import model.Group;
 import model.GroupMessage;
 import model.Message;
+import model.Notification;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +16,15 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 public class AppConfig {
+    @Bean
+    public NotificationDao notificationDao() {
+        return new NotificationDao();
+    }
     @Bean
     public GroupMessageDao groupMessageDao() {
         return new GroupMessageDao();
@@ -41,6 +47,7 @@ public class AppConfig {
                 .addAnnotatedClasses(Message.class)
                 .addAnnotatedClasses(Group.class)
                 .addAnnotatedClasses(GroupMessage.class)
+                .addAnnotatedClasses(Notification.class)
                 .buildSessionFactory();
     }
     @Bean
