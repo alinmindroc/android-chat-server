@@ -1,3 +1,2 @@
-endpointuri server:
-/message: POST - adaugare mesaj in request body
-        : GET - preluare lista de mesaje cu receiverId specificat ca url param
+This is the webservice for an android chat app.  
+The databases gets automatically wiped every month using a cron job.  
